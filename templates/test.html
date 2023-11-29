@@ -14,10 +14,7 @@
     <div class="container ">
         <h1 class="text-center">TEST</h1>
         <p>250x600</p>
-            <div class="d-flex justify-content-center">
-                <div style="height: 600px; width: 250px; " id="tall_ad" class="border">
-                </div>
-                <script>insert_ad('tall_ad')</script>
+            <div class="ad" style="height: 600px; width: 250px;"">
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed odio eu urna consectetur fringilla. Sed consequat posuere augue, ut mattis turpis accumsan eget. Integer elementum velit vel mattis maximus. Quisque ut semper purus, in semper erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin eu turpis id dolor ultrices elementum. Suspendisse posuere quam vitae finibus accumsan. Proin vel eros felis. Sed quis rhoncus lacus, eget euismod diam. Vestibulum pretium, elit consectetur rhoncus sollicitudin, eros ipsum suscipit leo, ut luctus enim enim sit amet eros.
 
@@ -31,12 +28,8 @@
     </div>
     
     <p>850x100</p>
-    <div class="d-flex justify-content-center w-100 bg-white" style="position: fixed; bottom: 0;">
-        <br>
-        <div style="height: 50px;" id="slim_ad" class="border w-100">
-            
-        </div>
-        <script>insert_ad('slim_ad')</script>
+    <div class="ad w-100" style="position: fixed; bottom: 0; height: 50px;">
     </div>
+    <script>generate_ad_spots()</script>
 </body>
 </html>

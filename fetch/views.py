@@ -1,6 +1,10 @@
-from flask import Blueprint, request, redirect
+from flask import Blueprint, request, redirect, send_file
 import datetime
 import sqlite3 as sq3
+
+import random
+import os
+
 
 fetch = Blueprint('fetch', __name__, url_prefix='/fetch')
 
@@ -37,18 +41,41 @@ def redir(ad_id):
 
 @fetch.route('/generate', methods=['GET'])
 def get_ad():
-    return {"ad_id": "1"}
+    all_ads = cur.execute("SELECT id FROM ads;").fetchall()
+    print(all_ads)
+    
+    index = random.randint(0, len(all_ads)-1)
+    
+    return {"ad_id": all_ads[index][0]}
+   # return {"ad_id": "6d2818f3"}
+
+@fetch.route('/images/<ad_id>', methods=['GET'])
+def ad_images(ad_id):
+    images = os.listdir(f'images/{ad_id}')
+    index = random.randint(0, len(images)-1)
+    return send_file(os.path.join(f'images/{ad_id}', images[index]), mimetype='image/png')
 
 @fetch.route('/ad/<ad_id>', methods=['POST'])
 def get_content(ad_id):
+    ads = os.listdir(f'designs/{ad_id}')
+    print(ads)
+    if len(ads) == 1:
+        with open(f'designs/{ad_id}/{ads[0]}', 'r') as f:
+            code = f.read()
+        return {"code": code}
+
     try:
-        height = request.args['h']
-        width = request.args['w']
-        
+        height = int(request.args['h'])
+        width = int(request.args['w'])
+
         ad_type = 'slim' if width > height else 'tall'
-        print(height, width)
+        
         print(ad_type)
-    except:
+        print(height, width)
+    except Exception as e:
+        print(e)
         ad_type = 'tall'
-    code = open(f'designs/{ad_id}/{ad_type}.html', 'r').read()
+    
+    with open(f'designs/{ad_id}/{ad_type}.html', 'r') as f:
+        code = f.read()
     return {"code":code}

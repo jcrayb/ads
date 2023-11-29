@@ -5,6 +5,10 @@ from flask import Flask, render_template
 app = Flask(__name__)
 app.register_blueprint(fetch)
 
+from flask_cors import CORS
+
+CORS(app)
+
 @app.route('/healthcheck')
 def healthcheck():
     return {'status':'healthy'}
