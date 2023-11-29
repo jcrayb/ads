@@ -13,7 +13,11 @@ function insert_ad(div_id){
 }
 
 function get_ad_content(ad_id, div_id){
-    fetch("http://localhost:8080/fetch/ad/"+ad_id, {
+    div = document.getElementById(div_id);
+    height = div.clientHeight;
+    width = div.clientWidth;
+    console.log(height, width)
+    fetch(`http://localhost:8080/fetch/ad/${ad_id}?h=${height}&w=${width}`, {
         method: 'POST'
     })
     .then(response => response.json())

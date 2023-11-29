@@ -7,44 +7,36 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script src="/static/ads.js"></script>
 </head>
 <body>
     <div class="container ">
         <h1 class="text-center">TEST</h1>
+        <p>250x600</p>
             <div class="d-flex justify-content-center">
-                <p>250x600</p>
-                <br>
                 <div style="height: 600px; width: 250px; " id="tall_ad" class="border">
-                    
                 </div>
+                <script>insert_ad('tall_ad')</script>
             </div>
-    </div>
-    <script>
-    fetch("http://localhost:8080/fetch/generate", {
-        method: 'GET'
-    })
-    .then(response => response.json())
-    .then(data =>{
-        ad_id = data['ad_id']
-        get_ad_content(ad_id)
-    }
-    ).catch(error=>{
-        console.error(error)
-    });
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed odio eu urna consectetur fringilla. Sed consequat posuere augue, ut mattis turpis accumsan eget. Integer elementum velit vel mattis maximus. Quisque ut semper purus, in semper erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin eu turpis id dolor ultrices elementum. Suspendisse posuere quam vitae finibus accumsan. Proin vel eros felis. Sed quis rhoncus lacus, eget euismod diam. Vestibulum pretium, elit consectetur rhoncus sollicitudin, eros ipsum suscipit leo, ut luctus enim enim sit amet eros.
 
-    function get_ad_content(ad_id){
-        fetch("http://localhost:8080/fetch/ad/"+ad_id, {
-            method: 'GET'
-        })
-        .then(response => response.json())
-        .then(data =>{
-            console.log(data)
-            document.getElementById("tall_ad").innerHTML = data['code']
-        }
-        ).catch(error=>{
-            console.error(error)
-        })
-    };       
-    </script>
+                Vestibulum nunc nulla, maximus ac nulla in, rutrum faucibus eros. Donec quis condimentum eros. Nullam semper metus ut lorem fermentum egestas. Donec ut libero sed quam condimentum finibus. Donec sodales dui felis, lacinia sodales turpis luctus non. Sed id tellus condimentum, hendrerit lectus quis, interdum risus. Morbi ut sapien quis felis tempus porttitor porta in nisl. Ut semper, dui eget placerat pretium, odio ex pharetra dolor, et aliquam quam diam sit amet arcu. Integer ac mauris semper mauris efficitur placerat.
+                
+                Proin imperdiet, turpis vitae vulputate dapibus, ex urna facilisis libero, id lobortis libero lorem nec augue. Maecenas libero leo, mollis a tortor ac, faucibus luctus mauris. Nulla cursus enim eget odio volutpat eleifend. Mauris ac imperdiet massa. Vivamus rhoncus ipsum quis neque ornare elementum. Curabitur id tellus vel turpis sollicitudin fringilla eget at enim. Sed venenatis sem nec dapibus malesuada. Pellentesque hendrerit mollis neque, vitae lobortis libero pulvinar non. Pellentesque ex lacus, tristique ut vehicula id, suscipit ac diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer leo nisl, volutpat nec posuere eleifend, ullamcorper et eros. Curabitur hendrerit dolor eget velit elementum, non sollicitudin urna egestas. Mauris porta faucibus est, nec bibendum dolor suscipit sed. Praesent vulputate ac est in lobortis.
+                
+                Aenean ex tortor, hendrerit vitae feugiat nec, placerat et mi. Nam eleifend enim vitae quam aliquam blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris placerat, nulla sed ultrices molestie, enim dui varius neque, id suscipit ex lacus a dui. Nam porttitor ullamcorper porta. Aliquam erat dui, euismod sit amet nunc non, tincidunt congue dui. In tincidunt ut erat ut vestibulum. Integer elit diam, scelerisque sed metus at, elementum egestas turpis. Phasellus blandit, lectus in congue congue, neque augue mattis lacus, et vehicula risus velit egestas erat. Mauris accumsan vulputate elit ac egestas. Nam porttitor odio in nisl placerat condimentum. Integer urna metus, interdum sit amet laoreet vitae, vulputate nec sem. Suspendisse potenti.
+                
+                Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus congue tempor erat at ullamcorper. Nullam pretium bibendum fringilla. Integer enim velit, condimentum vitae aliquam eu, luctus nec odio. Fusce interdum suscipit pellentesque. Nulla purus dui, dictum eu tellus ac, ultrices gravida ex. Nunc mollis, diam quis rhoncus tristique, ante nisi porta magna, nec lacinia tortor velit sed lectus. Aliquam sit amet nisl in lacus placerat maximus. Quisque euismod tellus vel enim tincidunt, vel porta lorem aliquet. Quisque nec interdum risus, nec laoreet diam. Maecenas a nunc efficitur, finibus justo vel, imperdiet nisi. Aenean cursus ante ac diam gravida, id dignissim lorem fringilla. Praesent dolor felis, blandit placerat nunc vitae, malesuada aliquet magna. Nullam nec ornare velit, et vestibulum odio. Aliquam maximus diam sit amet faucibus pellentesque.</p>
+    </div>
+    
+    <p>850x100</p>
+    <div class="d-flex justify-content-center w-100 bg-white" style="position: fixed; bottom: 0;">
+        <br>
+        <div style="height: 50px;" id="slim_ad" class="border w-100">
+            
+        </div>
+        <script>insert_ad('slim_ad')</script>
+    </div>
 </body>
 </html>
