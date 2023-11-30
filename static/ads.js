@@ -35,11 +35,15 @@ function get_ad_content(ad_id, div_id){
     })
     .then(response => response.json())
     .then(data =>{
-        console.log(data)
-        document.getElementById(div_id).innerHTML = data['code']
-        //`
-        //<a class="text-decoration-none text-black"
-        //href="/fetch/redirect/${ad_id}?website=${window.location.host}">`+data['code']+"</a>"
+        //content = `<a class="text-decoration-none text-black h-100 w-100" href="/fetch/redirect/${ad_id}?website=${window.location.host}">`
+        content = data['code']
+        console.log("()=> window.location.href ="+ `/fetch/redirect/${ad_id}?website=${window.location.host}`)
+        redirect = new String(`/fetch/redirect/${ad_id}?website=${window.location.host}`)
+        console.log(redirect)
+        document.getElementById(div_id).setAttribute("onclick", `window.location.href = '${redirect}}`+"'")
+        //content += "</a>"
+        console.log(content)
+        document.getElementById(div_id).innerHTML = content
     }
     ).catch(error=>{
         console.error(error)
